@@ -59,7 +59,7 @@
                 'starttime': starttime,	                // 开始时间
                 'endtime': '',							// 结束时间
                 'interval': 1000,						// 多久倒计时一次 单位：ms
-                'disabledCls': 'disabled',
+                'disableBtnCls': 'disabled',
                 'auto': true,							// 是否默认自动计数
                 'countEach': function (time) {			// 每单位时间出发事件,传入一个对象，包含时间信息(month)和时间格式化输出(format)
                     $this.text(time['current']);
@@ -88,7 +88,7 @@
                     'second': Math.floor(diff % 60000 / 1000),
                     'microsecond': diff % 1000,
                     'distance': diff,
-                    'current': format
+                    'format': format
                 };
             };
             let count = function () {
@@ -98,7 +98,7 @@
                 setTimeout(function () {
                     options.countEach(getTime());
                 }, 0);
-                $this.addClass(options.disabledCls);
+                $this.addClass(options.disableBtnCls);
                 _hander = setInterval(function () {
                     if (isReverse) {
                         if (options.starttime) {
